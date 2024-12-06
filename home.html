@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angels In Heaven School</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom, #8EC5FC, #E0C3FC);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background: #FFEB3B; /* Yellow */
+            padding: 10px 20px; /* Reduced padding */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative; /* Ensure positioning of buttons */
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem; /* Smaller font size */
+            color: #4A90E2;
+        }
+        header p {
+            font-size: 1rem; /* Smaller font size */
+            margin-top: 5px;
+            color: #555;
+        }
+        .header-buttons {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        .header-buttons button {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #4A90E2;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .header-buttons button:hover {
+            color: #357ABD;
+        }
+        .container {
+            flex: 1;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .container h2 {
+            font-size: 2.5rem;
+            color: #4A90E2;
+        }
+        .container p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+            margin: 20px auto;
+            max-width: 700px;
+        }
+        .button {
+            display: inline-block;
+            margin: 20px 10px;
+            padding: 15px 30px;
+            font-size: 1rem;
+            color: #fff;
+            background: #4A90E2;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+        }
+        .button:hover {
+            background: #357ABD;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        footer {
+            background: #FFEB3B; /* Yellow */
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        /* Styling for the image */
+        .school-logo {
+            width: 300px; /* Adjust size */
+            max-width: 100%;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Styling for the Bubble Modal */
+        .bubble {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 500px;
+            z-index: 1000;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .bubble p {
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .bubble .close-btn {
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .bubble .close-btn:hover {
+            background-color: #d75442;
+        }
+
+        /* Profile Image in Bubble */
+        .bubble img {
+            width: 300px; /* Smaller size */
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .bubble .caption {
+            font-size: 1.1rem;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        /* Animation for FadeIn */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Angels In Heaven School</h1>
+        <p>Empowering Minds, Enriching Souls</p>
+        <div class="header-buttons">
+            <button id="accountBtn"><i class="fas fa-user"></i></button>
+            <button id="shareBtn"><i class="fas fa-share-alt"></i></button>
+        </div>
+    </header>
+    <div class="container">
+        <img src="ahs.png" alt="Angels In Heaven School Logo" class="school-logo">
+        <h2>Welcome to Our School</h2>
+        <p>At Angels In Heaven School, we are dedicated to fostering academic excellence, creativity, and moral integrity. Join us in a journey of discovery and growth!</p>
+        <a href="#" class="button" id="learnMoreBtn">Learn More</a>
+        <a href="#" class="button" id="contactUsBtn">Contact Us</a>
+    </div>
+    
+    <!-- Learn More Bubble -->
+    <div class="bubble" id="learnMoreBubble">
+        <h3>About Angels In Heaven School</h3>
+        <p>Angels In Heaven School was founded in 1990 with the mission to provide a nurturing environment where students can grow academically and morally. We offer a wide range of extracurricular activities, modern facilities, and a dedicated staff.</p>
+        <button class="close-btn" onclick="closeBubble('learnMoreBubble')">Close</button>
+    </div>
+
+    <!-- Contact Us Bubble -->
+    <div class="bubble" id="contactUsBubble">
+        <h3>Contact Us</h3>
+        <p>If you would like to know more about Angels In Heaven School or have any inquiries, feel free to reach out to us via email at info@angelsinheaven.edu.ph or call us at (123) 456-7890.</p>
+        <button class="close-btn" onclick="closeBubble('contactUsBubble')">Close</button>
+    </div>
+
+    <!-- Share Options Modal -->
+    <div id="shareOptions" class="bubble">
+        <h3>Share This Page</h3>
+        <p>Choose an app to share:</p>
+        <ul>
+            <li><button onclick="shareToApp('Facebook')">Facebook</button></li>
+            <li><button onclick="shareToApp('Twitter')">Twitter</button></li>
+            <li><button onclick="shareToApp('Email')">Email</button></li>
+            <li><button onclick="shareToApp('WhatsApp')">WhatsApp</button></li>
+        </ul>
+        <button class="close-btn" onclick="closeShareOptions()">Close</button>
+    </div>
+
+    <!-- Profile Bubble (Updated) -->
+    <div class="bubble" id="profileBubble">
+        <img src="Sir.jpg" alt="Sir's Image">
+        <p class="caption">We will miss you, Sir.</p>
+        <button class="close-btn" onclick="closeBubble('profileBubble')">Close</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Angels In Heaven School. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Show bubble on button click
+        document.getElementById('learnMoreBtn').onclick = function() {
+            document.getElementById('learnMoreBubble').style.display = 'block';
+        }
+
+        document.getElementById('contactUsBtn').onclick = function() {
+            document.getElementById('contactUsBubble').style.display = 'block';
+        }
+
+        // Show profile bubble when the profile button is clicked
+        document.getElementById('accountBtn').onclick = function() {
+            document.getElementById('profileBubble').style.display = 'block';
+        }
+
+        // Close bubble
+        function closeBubble(bubbleId) {
+            document.getElementById(bubbleId).style.display = 'none';
+        }
+
+        // Share options
+        document.getElementById('shareBtn').onclick = function() {
+            document.getElementById('shareOptions').style.display = 'block';
+        }
+
+        function closeShareOptions() {
+            document.getElementById('shareOptions').style.display = 'none';
+        }
+
+        function shareToApp(app) {
+            alert('Sharing to ' + app);
+        }
+    </script>
+</body>
+</html>

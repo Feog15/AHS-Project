@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Angels In Heaven School</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #8EC5FC, #E0C3FC);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #4A90E2;
+            font-size: 2rem;
+        }
+        .login-container form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .input-field {
+            position: relative;
+        }
+        .input-field input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            color: #333;
+            transition: border-color 0.3s ease;
+        }
+        .input-field input:focus {
+            border-color: #4A90E2;
+        }
+        .input-field i {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #4A90E2;
+        }
+        .login-btn {
+            background-color: #4A90E2;
+            color: white;
+            padding: 14px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .login-btn:hover {
+            background-color: #357ABD;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .forgot-password {
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        .forgot-password a {
+            color: #4A90E2;
+            text-decoration: none;
+        }
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+        .logo {
+            display: block;
+            margin: 0 auto 30px;
+            width: 150px;
+        }
+        /* Responsive design */
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 30px 20px;
+            }
+            .login-container h2 {
+                font-size: 1.5rem;
+            }
+            .login-btn {
+                font-size: 1rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <img src="ahs.png" alt="Angels In Heaven School Logo" class="logo">
+        <h2>Login to Angels In Heaven School</h2>
+        <form id="loginForm">
+            <div class="input-field">
+                <input type="text" id="username" placeholder="Username" required>
+            </div>
+            <div class="input-field">
+                <input type="password" id="password" placeholder="Password" required>
+                <i class="fas fa-eye" id="togglePassword" onclick="togglePassword()"></i>
+            </div>
+            <button type="submit" class="login-btn">Log In</button>
+            <div class="forgot-password">
+                <a href="#">Forgot Password?</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Toggle password visibility
+        function togglePassword() {
+            const passwordField = document.getElementById("password");
+            const toggleIcon = document.getElementById("togglePassword");
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                toggleIcon.classList.remove("fa-eye");
+                toggleIcon.classList.add("fa-eye-slash");
+            } else {
+                passwordField.type = "password";
+                toggleIcon.classList.remove("fa-eye-slash");
+                toggleIcon.classList.add("fa-eye");
+            }
+        }
+
+        // Handle login form submission
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            // Simulate successful login and redirect
+            window.location.href = "home.html";  // Replace with your actual homepage URL
+        });
+    </script>
+</body>
+</html>
+
+
